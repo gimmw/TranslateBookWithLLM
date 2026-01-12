@@ -778,7 +778,9 @@ async function showTTSModal(filename, filepath) {
 
 // Set API base URL (same origin)
 if (typeof window !== 'undefined') {
-    window.API_BASE_URL = window.location.origin;
+  const pathParts = window.location.pathname.split('/');  
+  const subpath = pathParts.length > 2 ? '/' + pathParts[1] : '';  
+  window.API_BASE_URL = window.location.origin + subpath;
 }
 
 // ========================================

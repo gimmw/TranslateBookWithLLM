@@ -35,7 +35,8 @@ from src.config import (
     DEFAULT_MODEL,
     PORT,
     HOST,
-    OUTPUT_DIR
+    OUTPUT_DIR,
+    APPLICATION_ROOT
 )
 from src.api.routes import configure_routes
 from src.api.websocket import configure_websocket_handlers

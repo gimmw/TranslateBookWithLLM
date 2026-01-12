@@ -21,6 +21,8 @@ from .blueprints import (
     create_tts_blueprint
 )
 
+from src.config import APPLICATION_ROOT
+
 
 def configure_routes(app, state_manager, output_dir, start_translation_job, socketio=None):
     """
@@ -36,24 +38,24 @@ def configure_routes(app, state_manager, output_dir, start_translation_job, sock
 
     # Register config and health check routes
     config_bp = create_config_blueprint()
-    app.register_blueprint(config_bp)
+    app.register_blueprint(config_bp, url_prefix=APPLICATION_ROOT)
 
     # Register translation management routes
     translation_bp = create_translation_blueprint(state_manager, start_translation_job)
-    app.register_blueprint(translation_bp)
+    app.register_blueprint(translation_bp, url_prefix=APPLICATION_ROOT)
 
     # Register file management routes
     file_bp = create_file_blueprint(output_dir)
-    app.register_blueprint(file_bp)
+    app.register_blueprint(file_bp, url_prefix=APPLICATION_ROOT)
 
     # Register security and upload routes
     security_bp = create_security_blueprint(output_dir)
-    app.register_blueprint(security_bp)
+    app.register_blueprint(security_bp, url_prefix=APPLICATION_ROOT)
 
     # Register TTS routes (requires socketio for progress updates)
     if socketio:
         tts_bp = create_tts_blueprint(output_dir, socketio)
-        app.register_blueprint(tts_bp)
+        app.register_blueprint(tts_bp, url_prefix=APPLICATION_ROOT)
 
     # Register error handlers
     _register_error_handlers(app)
