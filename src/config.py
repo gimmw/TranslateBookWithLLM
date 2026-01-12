@@ -223,6 +223,7 @@ if DEBUG_MODE or _debug_mode:
     _config_logger.debug(f"   LLM_PROVIDER: {LLM_PROVIDER}")
     _config_logger.debug(f"   PORT: {PORT}")
     _config_logger.debug(f"   HOST: {HOST}")
+    _config_logger.debug(f"   APPLICATION_ROOT: {APPLICATION_ROOT}")
     _config_logger.debug(f"   DEFAULT_SOURCE_LANGUAGE: {DEFAULT_SOURCE_LANGUAGE}")
     _config_logger.debug(f"   DEFAULT_TARGET_LANGUAGE: {DEFAULT_TARGET_LANGUAGE}")
     _config_logger.debug(f"   OLLAMA_NUM_CTX: {OLLAMA_NUM_CTX}")
